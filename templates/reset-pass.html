@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<main>
+    <center>
+        <h1>Flask Blog-Lib</h1><br>
+        <p>The developer platform</p><br>
+        <hr>
+
+        <br><br>
+
+        <form method="POST">
+            <h3>Reset Password</h3><br>
+            <input type="email" placeholder="email" name="email" required /> <br><br>
+            <input type="password" placeholder="New Password" name="password" required /><br><br>
+            <input type="password" placeholder="Confirm New Password" name="confirm-password" required /><br><br>
+
+            Designation : <br>
+            <input id="Author" class="radio" type="radio" name="designation" value="author"> <label
+                class="no-label-decoration" for='Author'>Author</label>
+            <input id="Reader" class="radio" type="radio" name="designation" value="reader"> <label
+                class="no-label-decoration" for='Reader'>Reader</label><br><br>
+
+            <button class="submit" type="submit">Submit</button>
+        </form>
+    </center>
+
+</main>
+
+{% endblock %}

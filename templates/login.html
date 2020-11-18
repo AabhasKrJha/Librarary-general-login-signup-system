@@ -1,0 +1,122 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<p id='form-show' style="display: none;">{{form}}</p>
+
+<main>
+
+    <center>
+
+        <h1>Flask Blog-Lib</h1><br>
+        <p>The developer platform</p><br>
+
+        <hr>
+
+        <br><br>
+
+        <div id="login-options" style="display: block;">
+            <h3>Login as :</h3><br>
+            <button id='' style="float: left;" onclick="showForm('Reader_login')">Reader</button>
+            <button style=" float: right;" onclick="showForm('Authority_login')">Authority</button><br><br><br>
+            <button style="float: left;" onclick="showForm('Author_login')">Author</button>
+            <button style="float: right;" onclick="guestLogin()">Guest</button>
+            <br><br><br><br>
+            <a href="/reset-pass">Reset Password</a><br><br>
+            <a href='/signup'>Create new account</a>
+        </div>
+
+
+        <div class="login-forms">
+
+            <div id="Reader_login" style="display: none;">
+
+                <form action="/login" method="POST">
+                    <h3>Reader Login</h3><br>
+                    <input type="text" placeholder="Library ID / Email" name="email/library-id" value="{{ID}}"
+                        required /><br><br>
+                    <input type="password" placeholder="Password" name="password" required /><br><br>
+
+                    <button name='Reader_login' class="submit" type="submit">LogIn</button>
+
+                </form>
+
+                <button onclick="hideForm('Reader_login'); dismissFlash('flash-message');"
+                    style="float: right;">Back</button>
+
+            </div>
+
+            <div id="Authority_login" style="display: none;">
+
+                <form action="/login" method="POST">
+                    <h3>Authority Login</h3><br>
+                    <input type="text" placeholder="Library ID / Email" name="email/library-id" value="{{ID}}"
+                        required /><br><br>
+                    <input type="password" placeholder="Password" name="password" required /><br><br>
+
+                    <button name='Authority_login' class="submit" type="submit">LogIn</button>
+
+                </form>
+
+                <button onclick="hideForm('Authority_login'); dismissFlash('flash-message');"
+                    style="float: right;">Back</button>
+
+            </div>
+
+            <div id="Author_login" style="display: none;">
+
+                <form action="/login" method="POST">
+                    <h3>Author Login</h3><br>
+                    <input type="text" placeholder="Library ID / Email" name="email/library-id" value="{{ID}}"
+                        required /><br><br>
+                    <input type="password" placeholder="Password" name="password" required /><br><br>
+
+                    <button name='Author_login' class="submit" type="submit">LogIn</button>
+
+                </form>
+
+                <button onclick="hideForm('Author_login'); dismissFlash('flash-message');"
+                    style="float: right;">Back</button>
+
+            </div>
+
+            <div id="Guest_login" style="display: none;">
+
+                <form action="/login" method="POST">
+                    <h3>Guest Login</h3><br>
+                    <input type="text" placeholder="Library ID / Email" name="email/library-id" value="guest"
+                        required /><br><br>
+                    <input type="password" placeholder="Password" name="password" value="guest" required /><br><br>
+
+                    <button id='guest-login-btn' name='Guest_login' class="submit" type="submit">LogIn</button>
+
+                </form>
+
+                <button onclick="hideForm('Guest_login'); dismissFlash('flash-message');"
+                    style="float: right;">Back</button>
+
+            </div>
+
+
+            <br><br><br><br>
+
+            {% with messages= get_flashed_messages() %}
+            {% if messages %}
+            {% for message in messages%}
+            <center>
+                <div id="flash-message" class="alert-danger">
+                    <span>{{message}}</span>
+                    <button id='dismiss-flash-btn' onclick="dismissFlash('flash-message')">X</button>
+                </div>
+            </center><br>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+
+        </div>
+
+    </center>
+
+</main>
+
+{% endblock %}

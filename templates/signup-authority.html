@@ -1,0 +1,53 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<p id='form-show' style="display: none;">{{form}}</p>
+
+<main>
+    <center>
+        <h1>Flask Blog-Lib</h1><br>
+        <p>The developer platform</p><br>
+        <hr>
+
+        <br><br>
+
+        <div id="authority-signup-code" style="display: block;">
+            <form action="/signup-authority" method="POST">
+                <h3>Enter code :</h3><br>
+                <input type="email" placeholder="Email" name="email" required /> <br><br>
+                <input type="text" placeholder="Code" name="code" required /><br><br>
+                <button name="signup-code" class="submit" type="submit">Submit</button>
+            </form>
+        </div>
+
+        <div id='signup-form' style="display: none;">
+            <form action="/signup-authority" method="POST">
+                <h3>Authotrity Signup</h3><br>
+                <input type="text" placeholder="Full Name" name="name" value="{{name}}" required /><br><br>
+                <input type="email" placeholder="Email" name="email" value="{{email}}" required /><br><br>
+                <input type="tel" placeholder="Phone Number" name="phone" value='{{phone}}' required /><br><br>
+                <input type="password" placeholder="Password" name="password" required /><br><br>
+                <button name="signup-auth" class="submit" type="submit">Sign Up</button>
+            </form>
+        </div>
+
+        <br><br><br><br>
+
+        {% with messages= get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages%}
+        <center>
+            <div id="flash-message" class="alert-danger">
+                <span>{{message}}</span>
+                <button id='dismiss-flash-btn' onclick="dismissFlash('flash-message')">X</button>
+            </div>
+        </center><br>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+    </center>
+</main>
+
+{% endblock %}

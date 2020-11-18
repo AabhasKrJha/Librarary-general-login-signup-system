@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+
+<main>
+
+    <center>
+
+        <div id="db_login" style="display: block;">
+
+            <form action="/" method="POST">
+                <h3> MySQL Database Access Login</h3><br>
+                <input type="text" placeholder="User" name="user" value="{{user}}" required /><br><br>
+                <input type="password" placeholder="Password" name="password" required /><br><br>
+
+                <button class="submit" name='Reader_login' type="submit">Submit</button>
+
+            </form>
+        </div>
+
+
+        <br><br><br><br>
+
+        <center>
+            <div class="alert-slow-submit">
+                <span>Form submission may take some seconds.</span>
+            </div><br><br>
+
+            {% with messages= get_flashed_messages() %}
+            {% if messages %}
+            {% for message in messages%}
+            <center>
+                <div id="flash-message" class="alert-danger">
+                    <span>{{message}}</span>
+                    <button id='dismiss-flash-btn' onclick="dismissFlash('flash-message')">X</button>
+                </div>
+            </center><br>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+
+        </center><br>
+
+
+    </center>
+
+</main>
+
+<p style="display: none;">{{flash_msg}}</p>
+
+{% endblock %}

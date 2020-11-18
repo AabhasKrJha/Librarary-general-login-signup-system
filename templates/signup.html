@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<main>
+    <center>
+        <h1>Flask Blog-Lib</h1><br>
+        <p>The developer platform</p><br>
+        <hr>
+
+        <br><br>
+
+        <div id="librarian_login">
+            <form action="/signup" method="POST">
+                <h3>Welcome New Reader</h3><br>
+                <input type="text" placeholder="Full Name" name="name" value="{{name}}" required /><br><br>
+                <input type="email" placeholder="Email" name="email" value="{{email}}" required /><br><br>
+                <input type="tel" placeholder="Phone Number" name="phone" value='{{phone}}' required /><br><br>
+
+                Designation : <br>
+                <input id="Author" class="radio" type="radio" name="designation" value="author"> <label
+                    class="no-label-decoration" for='Author'>Author</label>
+                <input id="Reader" class="radio" type="radio" name="designation" value="reader"> <label
+                    class="no-label-decoration" for='Reader'>Reader</label><br><br>
+
+
+                <input type="password" placeholder="Password" name="password" required /><br><br>
+                <button class="submit" type="submit">Sign Up</button>
+            </form>
+            <button style="float: right;" onclick="goback()">Back</button>
+        </div>
+
+        <br><br><br><br>
+
+        {% with messages= get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages%}
+        <center>
+            <div id="flash-message" class="alert-danger">
+                <span>{{message}}</span>
+                <button id='dismiss-flash-btn' onclick="dismissFlash('flash-message')">X</button>
+            </div>
+        </center><br>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+    </center>
+</main>
+
+{% endblock %}

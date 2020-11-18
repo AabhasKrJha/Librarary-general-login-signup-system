@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<main>
+
+    <center>
+        <div>
+            <form action="/job-conf" method="POST">
+                <input type="email" name="email" placeholder="Email" /> <br><br>
+                <button type="submit" class="submit" style='width: 100%'>Send Code</button>
+            </form>
+        </div>
+
+        {% if applications %}
+        <h3>APPLICATIONS RECIEVED</h3> <br><br>
+
+        {% for application in applications %}
+        <span>{{application}}</span><br><br>
+        {% endfor %}
+
+        {% endif %}
+
+    </center>
+
+</main>
+
+{% endblock %}
